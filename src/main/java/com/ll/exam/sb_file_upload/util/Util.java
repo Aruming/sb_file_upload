@@ -1,4 +1,4 @@
-package com.ll.exam.sb_file_upload.app.util;
+package com.ll.exam.sb_file_upload.util;
 
 import groovy.grape.IvyGrabRecord;
 import org.apache.tika.Tika;
