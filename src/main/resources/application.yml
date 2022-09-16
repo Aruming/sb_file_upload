@@ -36,3 +36,6 @@ spring:
       ddl-auto: create
 custom:
   genFileDirPath: D:/git-work/tmp/sb_file_upload
+logging:
+  level:
+    com.ll.exam.sb_file_upload.app: debug
