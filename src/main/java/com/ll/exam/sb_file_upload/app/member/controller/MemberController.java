@@ -69,6 +69,22 @@ public class MemberController {
     }
 
     @PreAuthorize("isAuthenticated()")
+    @GetMapping("/modify")
+    public String showModify() {
+        return "member/modify";
+    }
+
+    @PreAuthorize("isAuthenticated()")
+    @PostMapping("/modify")
+    public String modify(@AuthenticationPrincipal MemberContext context, String email, MultipartFile profileImg) {
+        Member member = memberService.getMemberById(context.getId());
+
+        memberService.modify(member, email, profileImg);
+
+        return "redirect:/member/profile";
+    }
+
+    @PreAuthorize("isAuthenticated()")
     @GetMapping("/profile")
     public String showProfile() {
         return "member/profile";
