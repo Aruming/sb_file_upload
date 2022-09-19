@@ -3,6 +3,8 @@ package com.ll.exam.sb_file_upload.app.article.controller;
 import com.ll.exam.sb_file_upload.app.article.controller.input.ArticleForm;
 import com.ll.exam.sb_file_upload.app.article.entity.Article;
 import com.ll.exam.sb_file_upload.app.article.service.ArticleService;
+import com.ll.exam.sb_file_upload.app.base.dto.RsData;
+import com.ll.exam.sb_file_upload.app.fileUpload.entity.GenFile;
 import com.ll.exam.sb_file_upload.app.fileUpload.service.GenFileService;
 import com.ll.exam.sb_file_upload.app.security.dto.MemberContext;
 import lombok.RequiredArgsConstructor;
@@ -50,7 +52,9 @@ public class ArticleController {
 
         Article article = articleService.write(memberContext.getId(), articleForm.getSubject(), articleForm.getContent());
 
-        genFileService.saveFiles(article, fileMap);
+        RsData<Map<String, GenFile>> saveFilesRsData = genFileService.saveFiles(article, fileMap);
+
+        log.debug("saveFilesRsData : " + saveFilesRsData);
 
         return "작업중";
     }
