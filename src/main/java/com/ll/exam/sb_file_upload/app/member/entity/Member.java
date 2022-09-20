@@ -1,5 +1,6 @@
 package com.ll.exam.sb_file_upload.app.member.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.ll.exam.sb_file_upload.app.base.AppConfig;
 import com.ll.exam.sb_file_upload.app.base.entity.BaseEntity;
 import lombok.*;
@@ -19,6 +20,7 @@ import java.io.File;
 public class Member extends BaseEntity {
     @Column(unique = true)
     private String username;
+    @JsonIgnore
     private String password;
     private String email;
     private String profileImg;
