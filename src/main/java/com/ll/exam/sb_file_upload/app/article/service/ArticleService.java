@@ -2,8 +2,8 @@ package com.ll.exam.sb_file_upload.app.article.service;
 
 import com.ll.exam.sb_file_upload.app.article.entity.Article;
 import com.ll.exam.sb_file_upload.app.article.repository.ArticleRepository;
-import com.ll.exam.sb_file_upload.app.fileUpload.entity.GenFile;
-import com.ll.exam.sb_file_upload.app.fileUpload.service.GenFileService;
+import com.ll.exam.sb_file_upload.app.gen.entity.GenFile;
+import com.ll.exam.sb_file_upload.app.gen.service.GenFileService;
 import com.ll.exam.sb_file_upload.app.member.entity.Member;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;

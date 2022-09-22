@@ -1,4 +1,4 @@
-package com.ll.exam.sb_file_upload.app.fileUpload.controller;
+package com.ll.exam.sb_file_upload.app.gen.controller;
 
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;

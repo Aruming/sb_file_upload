@@ -1,4 +1,4 @@
-package com.ll.exam.sb_file_upload.app.fileUpload.entity;
+package com.ll.exam.sb_file_upload.app.gen.entity;
 
 import com.ll.exam.sb_file_upload.app.base.AppConfig;
 import com.ll.exam.sb_file_upload.app.base.entity.BaseEntity;
@@ -33,6 +33,10 @@ public class GenFile extends BaseEntity {
 
     public String getUrl() {
         return "/gen/" + getFileDir() + "/" + getFileName();
+    }
+
+    public String getDownloadUrl() {
+        return "/download/gen/" + getId();
     }
 
     public void merge(GenFile other) {

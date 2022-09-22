@@ -4,8 +4,8 @@ import com.ll.exam.sb_file_upload.app.article.controller.input.ArticleForm;
 import com.ll.exam.sb_file_upload.app.article.entity.Article;
 import com.ll.exam.sb_file_upload.app.article.service.ArticleService;
 import com.ll.exam.sb_file_upload.app.base.dto.RsData;
-import com.ll.exam.sb_file_upload.app.fileUpload.entity.GenFile;
-import com.ll.exam.sb_file_upload.app.fileUpload.service.GenFileService;
+import com.ll.exam.sb_file_upload.app.gen.entity.GenFile;
+import com.ll.exam.sb_file_upload.app.gen.service.GenFileService;
 import com.ll.exam.sb_file_upload.app.security.dto.MemberContext;
 import com.ll.exam.sb_file_upload.util.Util;
 import lombok.RequiredArgsConstructor;
@@ -15,7 +15,6 @@ import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.multipart.MultipartRequest;
@@ -81,7 +80,11 @@ public class ArticleController {
     @PreAuthorize("isAuthenticated()")
     @PostMapping("/{id}/modify")
     @ResponseBody // 임시
-    public String modify(@AuthenticationPrincipal MemberContext memberContext, Model model, @PathVariable Long id, @Valid ArticleForm articleForm, MultipartRequest multipartRequest) {
+    public String modify(@AuthenticationPrincipal MemberContext memberContext,
+                         Model model, @PathVariable Long id,
+                         @Valid ArticleForm articleForm,
+                         MultipartRequest multipartRequest,
+                         @RequestParam Map<String, String> params) {
         Article article = articleService.getForPrintArticleById(id);
 
         if (memberContext.memberIsNot(article.getAuthor())) {
@@ -90,6 +93,8 @@ public class ArticleController {
 
         Map<String, MultipartFile> fileMap = multipartRequest.getFileMap();
 
+
+        genFileService.deleteFiles(article, params);
         RsData<Map<String, GenFile>> saveFilesRsData = genFileService.saveFiles(article, fileMap);
 
         articleService.modify(article, articleForm.getSubject(), articleForm.getContent());

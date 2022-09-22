@@ -1,6 +1,6 @@
-package com.ll.exam.sb_file_upload.app.fileUpload.repository;
+package com.ll.exam.sb_file_upload.app.gen.repository;
 
-import com.ll.exam.sb_file_upload.app.fileUpload.entity.GenFile;
+import com.ll.exam.sb_file_upload.app.gen.entity.GenFile;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 import java.util.List;
