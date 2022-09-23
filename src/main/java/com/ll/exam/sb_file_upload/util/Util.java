@@ -19,7 +19,7 @@ public class Util {
             if (str == null) return true;
             if (str.trim().length() == 0) return true;
 
-            return true;
+            return false;
         }
 
         public static boolean eq(String str1, String str2) {
