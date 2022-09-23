@@ -38,6 +38,10 @@ public class ArticleController {
         List<Article> articles = articleService.getArticles();
         model.addAttribute("articles", articles);
 
+        for ( Article article : articles ) {
+            articleService.loadForPrintData(article);
+        }
+
         return "article/list";
     }
 

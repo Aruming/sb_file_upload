@@ -59,13 +59,17 @@ public class ArticleService {
     public Article getForPrintArticleById(Long id) {
         Article article = getArticleById(id);
 
+        loadForPrintData(article);
+
+        return article;
+    }
+
+    public void loadForPrintData(Article article) {
         Map<String, GenFile> genFileMap = genFileService.getRelGenFileMap(article);
         List<HashTag> hashTags = hashTagService.getHashTags(article);
 
         article.getExtra().put("hashTags", hashTags);
         article.getExtra().put("genFileMap", genFileMap);
-
-        return article;
     }
 
     public void modify(Article article, String subject, String content, String hashTagContents) {
