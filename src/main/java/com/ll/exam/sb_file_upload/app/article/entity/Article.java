@@ -5,11 +5,8 @@ import com.ll.exam.sb_file_upload.app.member.entity.Member;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
-import java.io.File;
 
 @Entity
 @Setter
